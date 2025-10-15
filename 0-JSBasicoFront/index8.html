@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Demonstração JavaScript</title>
+
+    <!--
+    Ao adicionar o atributo defer a uma tag <script> no <head>, você diz ao navegador:
+    - Baixe este script em paralelo, sem pausar a renderização do HTML.
+    - Execute o script somente depois que todo o HTML da página for analisado, mas antes do evento DOMContentLoaded.
+    -->
+    <script src="meu-script.js" defer></script>
+
+    <script>
+        // A função alert() é pré-definida e cria uma caixa de diálogo simples.
+        // Ela vai aparecer antes de você ver qualquer conteúdo na página.
+        alert("Script do <head> executado! A página ainda não foi carregada.");
+    </script>
+
+</head>
+<body>
+
+    <h1 id="tituloPrincipal">Olá, Mundo!</h1>
+    <p>Clique no botão abaixo para interagir com a página.</p>
+
+    <button onclick="iniciarInteracao()">Clique Aqui</button>
+
+    <button onclick="dizerOla()">Dizer Olá (função externa)</button>
+
+    <script type="text/javascript">
+        // NOTA: O atributo 'type="text/javascript"' era obrigatório antigamente,
+        // mas hoje em dia é o padrão e pode ser omitido. Apenas <script> funciona.
+
+        // Esta mensagem só aparecerá no console do navegador (F12) após a página ser carregada.
+        console.log("Script do <body> executado! A página já está visível.");
+        
+        function mostrarBoasVindas() {                             // --- Atividade ---
+            window.onload = (event) => {
+                console.log("OLÁ");
+            };
+        }
+        function dizerOla() {
+            const data = new Date().getHours();
+            if (data <= 12 && data >= 6) {
+                alert("Olá, Bom dia!");
+            } else if (data >= 12 && data < 18) {
+                alert("Olá, Boa tarde!");
+            } else if (data >= 18 && data <= 23) {
+                alert("Olá, Boa noite!");
+            } else {
+                alert("Vai dormir!");
+            }
+        }  
+
+        mostrarBoasVindas();
+
+        // --- DEFINIÇÃO DE UMA FUNÇÃO ---
+        // A função é um bloco de código que pode ser chamado/executado quando quisermos.
+        // Esta função será chamada quando o botão for clicado (pelo 'onclick').
+        function iniciarInteracao() {
+            
+            // --- USO DE UMA FUNÇÃO PRÉ-DEFINIDA: prompt() ---
+            // A função prompt() abre uma caixa de diálogo para solicitar uma entrada do usuário.
+            const nomeUsuario = prompt("Por favor, digite o seu nome:");
+
+            // --- MANIPULAÇÃO DO DOM (Document Object Model) ---
+            // Usamos document.getElementById() para encontrar um elemento na página pelo seu 'id'.
+            const elementoTitulo = document.getElementById("tituloPrincipal");
+
+            // Verificamos se o usuário digitou um nome.
+            if (nomeUsuario) {
+                // Modificamos o conteúdo do elemento <h1> para incluir o nome do usuário.
+                elementoTitulo.textContent = `Olá, ${nomeUsuario}!`;
+
+                // --- USO DE UMA FUNÇÃO PRÉ-DEFINIDA: alert() ---
+                // Usamos alert() para dar um feedback ao usuário.
+                alert("O título da página foi alterado!");
+            } else {
+                alert("Você não digitou um nome, então o título não foi alterado.");
+            }
+            // --- FIM DA FUNÇÃO ---
+        }
+    </script>
+
+</body>
+</html>
