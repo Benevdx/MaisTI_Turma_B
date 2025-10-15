@@ -5,7 +5,7 @@ let nroCliques;
 
 // Permite inicializar o estado
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(400, 400)
   nroCliques = 0;
 }
 
@@ -18,5 +18,5 @@ function draw() {
 
 // Cada clique do mouse altera o estado
 function mouseClicked() {
-  nroCliques++; // cada clique do mouse incrementa nroCliques
+  nroCliques+; // cada clique do mouse incrementa nroCliques
 }

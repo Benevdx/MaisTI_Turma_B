@@ -28,7 +28,7 @@ VALUES ('João Santos', '(71) 98877-1234', 'joao.santos@email.com');
 
 -- Contato 2 
 ______ ____ Contatos (nome, telefone, email)
-VALUES ('Maria Oliveira', '(79) 99654-9876', 'maria.oliveira@email.com');
+VALUE ('Maria Oliveira', '(79) 99654-9876', 'maria.oliveira@email.com');
 
 -- Contato 3 
 ______ ____ Contatos (nome, telefone, email)
